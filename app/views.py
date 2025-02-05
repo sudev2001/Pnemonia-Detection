@@ -23,7 +23,7 @@ def pnemonia_detection(request):
         absolute_path = default_storage.path(file_path)
         relative_path = f"/media/uploads/{uploaded_file.name}"  # Path for HTML
 
-        print("📂 File saved at:", absolute_path)
+        # print("📂 File saved at:", absolute_path)
 
         if not os.path.exists(absolute_path):
             return JsonResponse({"error": "Saved file not found!"}, status=500)
@@ -40,7 +40,7 @@ def pnemonia_detection(request):
             predicted_class = int(np.round(prediction))  # Convert probability to class
             result = "Pneumonia Detected" if predicted_class == 1 else "Normal X-Ray"
 
-            print("✅ Prediction:", result)
+            # print("✅ Prediction:", result)
 
             return render(request, "index.html", {"result": result, "image_url": relative_path})
 
